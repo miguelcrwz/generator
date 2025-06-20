@@ -1,0 +1,23 @@
+# binaries (go build names it after the module: miguelcrwz)
+/generator
+/miguelcrwz
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# test and coverage output
+*.test
+*.out
+coverage.*
+
+# go workspace
+go.work
+go.work.sum
+
+# editors and os
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
