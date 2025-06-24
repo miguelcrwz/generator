@@ -2,10 +2,34 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 )
 
 func generatePassword(length int) string {
-	return ""
+	rand.Seed(time.Now().UnixNano())
+
+	lowerCase := "abcdefghijklmnopqrstuvwxyz"
+	upperCase := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	numbers := "0123456789"
+	special := "!@#$%^&*()+?><:{}[]"
+
+	allChars := lowerCase + upperCase + numbers + special
+
+	mandatory := []byte{
+		upperCase[rand.Intn(len(upperCase))],
+		numbers[rand.Intn(len(numbers))],
+	}
+
+	password := make([]byte, length-len(mandatory))
+
+	for i := range password {
+		password[i] = allChars[rand.Intn(len(allChars))]
+	}
+
+	password = append(password, mandatory...)
+
+	return string(password)
 }
 
 func main() {
