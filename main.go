@@ -29,6 +29,10 @@ func generatePassword(length int) string {
 
 	password = append(password, mandatory...)
 
+	rand.Shuffle(len(password), func(i, j int) {
+		password[i], password[j] = password[j], password[i]
+	})
+
 	return string(password)
 }
 
