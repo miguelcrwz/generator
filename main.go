@@ -7,6 +7,10 @@ import (
 )
 
 func generatePassword(length int) string {
+	if length < 2 {
+		return "\033[31;1m✘ PASSWORD LENGHT MUST BE AT LEAST 2\033[0m"
+	}
+
 	rand.Seed(time.Now().UnixNano())
 
 	lowerCase := "abcdefghijklmnopqrstuvwxyz"
